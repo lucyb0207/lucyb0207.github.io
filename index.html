@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucy Batten</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070A0F;
+  --panel:#0E131B;
+  --text:#E8EAF0;
+  --muted:#9AA3B2;
+  --accent:#3B82F6;
+  --border:rgba(255,255,255,0.08);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter, sans-serif;
+}
+
+body{
+  background:
+    radial-gradient(900px 500px at 20% -10%, rgba(59,130,246,0.18), transparent),
+    radial-gradient(700px 400px at 90% 10%, rgba(0,200,255,0.08), transparent),
+    var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:24px 40px;
+  position:sticky;
+  top:0;
+  backdrop-filter: blur(10px);
+  background:rgba(7,10,15,0.6);
+  border-bottom:1px solid var(--border);
+  z-index:10;
+}
+
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:18px;
+  font-size:13px;
+}
+
+nav a:hover{color:white}
+
+/* HERO */
+.hero{
+  max-width:1000px;
+  margin:110px auto 60px;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap:40px;
+}
+
+.hero h1{
+  font-size:3.8rem;
+  letter-spacing:-1.5px;
+  line-height:1.05;
+}
+
+.hero p{
+  color:var(--muted);
+  margin-top:16px;
+  line-height:1.6;
+  max-width:520px;
+}
+
+.cta{
+  margin-top:24px;
+  display:flex;
+  gap:12px;
+}
+
+.button{
+  padding:10px 14px;
+  border-radius:10px;
+  font-size:13px;
+  text-decoration:none;
+  border:1px solid var(--border);
+  color:var(--text);
+  transition:0.2s;
+}
+
+.button.primary{
+  background:linear-gradient(135deg, #3B82F6, #5B9CFF);
+  border:none;
+  box-shadow:0 10px 30px rgba(59,130,246,0.25);
+}
+
+.button.primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 40px rgba(59,130,246,0.35);
+}
+
+.button:hover{
+  transform:translateY(-2px);
+}
+
+/* SIDE CARD */
+.card{
+  background:linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+
+/* SECTIONS */
+section{
+  max-width:900px;
+  margin:110px auto;
+  padding:0 24px;
+  position:relative;
+}
+
+section::before{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  background:radial-gradient(circle at top, rgba(59,130,246,0.08), transparent 60%);
+  z-index:-1;
+}
+
+h2{
+  font-size:12px;
+  letter-spacing:2px;
+  color:var(--muted);
+  margin-bottom:18px;
+  text-transform:uppercase;
+}
+
+/* LIST ITEMS */
+.item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin-bottom:12px;
+  background:rgba(255,255,255,0.02);
+  transition:0.25s;
+}
+
+.item:hover{
+  transform:translateY(-4px);
+  border-color:rgba(59,130,246,0.4);
+  background:rgba(255,255,255,0.03);
+}
+
+.title{font-weight:500}
+.desc{font-size:12px;color:var(--muted);margin-top:4px}
+.left{display:flex;flex-direction:column}
+
+a.link{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:13px;
+}
+
+a.link:hover{color:var(--accent)}
+
+/* NOW */
+.now{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  font-size:12px;
+  padding:8px 10px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  color:var(--muted);
+}
+
+/* FADE */
+.fade{
+  opacity:0;
+  transform:translateY(10px);
+  transition:0.6s ease;
+}
+
+.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+  .hero h1{
+    font-size:2.8rem;
+  }
+  nav{
+    padding:20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div>Lucy Batten</div>
+  <div>
+    <a href="#work">Work</a>
+    <a href="#learn">Learn</a>
+    <a href="#content">Content</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero fade">
+  <div>
+    <h1>I build tools, learn in public, and ship fast.</h1>
+    <p>
+      I’m focused on building software, sharing what I learn,
+      and turning ideas into real products and income streams.
+    </p>
+
+    <div class="cta">
+      <a class="button primary" href="#">View Projects</a>
+      <a class="button" href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div>🚀 Building: CodeAtlas</div>
+    <div>📚 Learning: Systems + CS</div>
+    <div>🎥 Content: Devlogs</div>
+    <div style="margin-top:12px;color:var(--muted);font-size:12px;">
+      Building in public.
+    </div>
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work" class="fade">
+  <h2>Selected Work</h2>
+
+  <div class="item">
+    <div class="left">
+      <div class="title">CodeAtlas</div>
+      <div class="desc">Visualise GitHub repos as dependency graphs</div>
+    </div>
+    <a class="link" href="https://github.com/lucyb0207/CodeAtlas">GitHub →</a>
+  </div>
+
+</section>
+
+<!-- LEARN -->
+<section id="learn" class="fade">
+  <h2>Learning & Products</h2>
+
+  <div class="item">
+    <div class="left">
+      <div class="title">Digital Products</div>
+      <div class="desc">Templates & resources</div>
+    </div>
+    <a class="link" href="https://payhip.com/lucyb0207">Shop →</a>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section id="content" class="fade">
+  <h2>Content</h2>
+
+  <div class="item">
+    <div class="left">
+      <div class="title">YouTube</div>
+      <div class="desc">Devlogs & builds</div>
+    </div>
+    <a class="link" href="https://www.youtube.com/@lucyb0207">Watch →</a>
+  </div>
+
+  <div class="item">
+    <div class="left">
+      <div class="title">Patreon</div>
+      <div class="desc">Behind the scenes</div>
+    </div>
+    <a class="link" href="https://www.patreon.com/cw/LucyBuilds">Join →</a>
+  </div>
+</section>
+
+<!-- NOW -->
+<section class="fade">
+  <h2>Now</h2>
+  <div class="now">
+    <div class="tag">Building SaaS ideas</div>
+    <div class="tag">Learning full-stack dev</div>
+    <div class="tag">Growing audience</div>
+    <div class="tag">Experimenting with income</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade">
+  <h2>Contact</h2>
+
+  <div class="item">
+    <div class="left">
+      <div class="title">GitHub</div>
+      <div class="desc">Everything I build lives here</div>
+    </div>
+    <a class="link" href="https://github.com/lucyb0207">Go →</a>
+  </div>
+
+  <div class="item">
+    <div class="left">
+      <div class="title">Email</div>
+      <div class="desc">Get in touch via email</div>
+    </div>
+    <a class="link" href="mailto:lucyb0207@icloud.com">Send →</a>
+  </div>
+
+  <div class="item">
+    <div class="left">
+      <div class="title">LinkedIn</div>
+      <div class="desc">Let's connect on LinkedIn</div>
+    </div>
+    <a class="link" href="https://linkedin.com/in/lucybatten">Go →</a>
+  </div>
+</section>
+
+<footer class="fade">
+  Built intentionally. Updated when things change.
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+    }
+  });
+});
+
+document.querySelectorAll('.fade').forEach(el=>{
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
