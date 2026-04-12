@@ -1,385 +1,684 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="google-site-verification" content="7_scL4C7-piLD7CcAKvmTBfXIDPIBqSxLG8LfbYudzk" />
-<title>Lucy Batten</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="7_scL4C7-piLD7CcAKvmTBfXIDPIBqSxLG8LfbYudzk" />
+  <title>Lucy Batten — Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    :root {
+      --bg: #FAFAF8;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F4F3EF;
+      --text: #1A1916;
+      --text-muted: #6B6860;
+      --text-faint: #A8A69E;
+      --border: rgba(26,25,22,0.1);
+      --border-strong: rgba(26,25,22,0.2);
+      --accent: #2D5A3D;
+      --accent-light: #EAF2ED;
+      --substack: #FF6719;
+      --yt: #FF0000;
+      --payhip: #5046E5;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
 
-<style>
-:root{
-  --bg:#070A0F;
-  --panel:#0E131B;
-  --text:#E8EAF0;
-  --muted:#9AA3B2;
-  --accent:#3B82F6;
-  --border:rgba(255,255,255,0.08);
-}
+    html { scroll-behavior: smooth; }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter, sans-serif;
-}
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
 
-body{
-  background:
-    radial-gradient(900px 500px at 20% -10%, rgba(59,130,246,0.18), transparent),
-    radial-gradient(700px 400px at 90% 10%, rgba(0,200,255,0.08), transparent),
-    var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2.5rem;
+      height: 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
 
-/* NAV */
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:24px 40px;
-  position:sticky;
-  top:0;
-  backdrop-filter: blur(10px);
-  background:rgba(7,10,15,0.6);
-  border-bottom:1px solid var(--border);
-  z-index:10;
-}
+    /* SECTIONS */
+    .section {
+      padding: 5rem 2.5rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .section + .section {
+      border-top: 0.5px solid var(--border);
+    }
 
-nav a{
-  color:var(--muted);
-  text-decoration:none;
-  margin-left:18px;
-  font-size:13px;
-}
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 2rem;
+    }
 
-nav a:hover{color:white}
+    /* HERO */
+    .hero {
+      padding-top: 7rem;
+      padding-bottom: 6rem;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(42px, 6vw, 60px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-bio {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 0.5px solid var(--border-strong);
+      color: var(--text-muted);
+      text-decoration: none;
+      background: var(--bg-card);
+      transition: all 0.15s;
+      letter-spacing: 0.01em;
+    }
+    .pill:hover {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+    .pill svg { width: 12px; height: 12px; flex-shrink: 0; }
 
-/* HERO */
-.hero{
-  max-width:1000px;
-  margin:110px auto 60px;
-  padding:0 24px;
-  display:grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap:40px;
-}
+    /* ABOUT */
+    .about-text {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+    .about-text strong {
+      color: var(--text);
+      font-weight: 500;
+    }
 
-.hero h1{
-  font-size:3.8rem;
-  letter-spacing:-1.5px;
-  line-height:1.05;
-}
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      transition: border-color 0.15s, transform 0.15s;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+    .project-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+    .project-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .project-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
 
-.hero p{
-  color:var(--muted);
-  margin-top:16px;
-  line-height:1.6;
-  max-width:520px;
-}
+    /* SKILLS */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-tag {
+      font-size: 13px;
+      font-weight: 400;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border: 0.5px solid var(--border);
+      transition: all 0.15s;
+    }
+    .skill-tag:hover {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: transparent;
+    }
 
-.cta{
-  margin-top:24px;
-  display:flex;
-  gap:12px;
-}
+    /* CREATOR SECTIONS */
+    .creator-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 1.5rem;
+    }
+    .creator-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .creator-icon svg { width: 20px; height: 20px; }
+    .creator-name { font-size: 17px; font-weight: 500; color: var(--text); }
+    .creator-handle { font-size: 13px; color: var(--text-faint); margin-top: 2px; }
 
-.button{
-  padding:10px 14px;
-  border-radius:10px;
-  font-size:13px;
-  text-decoration:none;
-  border:1px solid var(--border);
-  color:var(--text);
-  transition:0.2s;
-}
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: opacity 0.15s, transform 0.15s;
+      letter-spacing: 0.01em;
+    }
+    .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .cta-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-.button.primary{
-  background:linear-gradient(135deg, #3B82F6, #5B9CFF);
-  border:none;
-  box-shadow:0 10px 30px rgba(59,130,246,0.25);
-}
+    /* SUBSTACK */
+    .substack-icon { background: #FFF0E8; }
+    .substack-icon svg { color: var(--substack); }
+    .substack-posts { display: flex; flex-direction: column; gap: 10px; }
+    .substack-post {
+      display: block;
+      text-decoration: none;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.3rem;
+      background: var(--bg-card);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .substack-post:hover { border-color: var(--substack); background: #FFF7F3; }
+    .post-date { font-size: 11px; color: var(--text-faint); margin-bottom: 4px; }
+    .post-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+    .post-preview { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+    .btn-substack { background: var(--substack); color: white; }
 
-.button.primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 40px rgba(59,130,246,0.35);
-}
+    /* YOUTUBE */
+    .yt-icon { background: #FFEBEB; }
+    .yt-icon svg { color: var(--yt); }
+    .yt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .yt-card {
+      display: block;
+      text-decoration: none;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg-card);
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .yt-card:hover { border-color: var(--yt); transform: translateY(-2px); }
+    .yt-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .yt-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .yt-play-btn {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,0,0,0.9);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .yt-play-btn svg { width: 16px; height: 16px; color: white; margin-left: 2px; }
+    .yt-card-body { padding: 10px 12px 12px; }
+    .yt-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; margin-bottom: 3px; }
+    .yt-meta { font-size: 11px; color: var(--text-faint); }
+    .btn-yt { background: var(--yt); color: white; }
 
-.button:hover{
-  transform:translateY(-2px);
-}
+    /* DIGITAL PRODUCTS */
+    .payhip-icon { background: #EEEDFB; }
+    .payhip-icon svg { color: var(--payhip); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .product-card {
+      display: block;
+      text-decoration: none;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg-card);
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .product-card:hover { border-color: var(--payhip); transform: translateY(-2px); }
+    .product-cover {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-cover svg { width: 32px; height: 32px; color: var(--text-faint); }
+    .product-body { padding: 10px 14px 14px; }
+    .product-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+    .product-price { font-size: 12px; color: var(--text-muted); }
+    .btn-payhip { background: var(--payhip); color: white; }
 
-/* SIDE CARD */
-.card{
-  background:linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:18px;
-}
+    /* CONTACT */
+    .contact-bio {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 1.75rem;
+      max-width: 480px;
+    }
+    .contact-email {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--border-strong);
+      padding-bottom: 3px;
+      transition: border-color 0.15s;
+    }
+    .contact-email:hover { border-color: var(--accent); color: var(--accent); }
 
-/* SECTIONS */
-section{
-  max-width:900px;
-  margin:110px auto;
-  padding:0 24px;
-  position:relative;
-}
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+    footer a { color: var(--text-faint); text-decoration: none; }
+    footer a:hover { color: var(--text-muted); }
 
-section::before{
-  content:"";
-  position:absolute;
-  inset:-40px;
-  background:radial-gradient(circle at top, rgba(59,130,246,0.08), transparent 60%);
-  z-index:-1;
-}
+    /* NOTE CALLOUT */
+    .note {
+      background: var(--bg-subtle);
+      border: 0.5px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem 1.1rem;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 1.25rem;
+      line-height: 1.6;
+    }
+    .note strong { color: var(--text); font-weight: 500; }
 
-h2{
-  font-size:12px;
-  letter-spacing:2px;
-  color:var(--muted);
-  margin-bottom:18px;
-  text-transform:uppercase;
-}
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1   { animation: fadeUp 0.6s ease both; }
+    .hero-bio  { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-pills { animation: fadeUp 0.6s 0.2s ease both; }
 
-/* LIST ITEMS */
-.item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px;
-  border:1px solid var(--border);
-  border-radius:14px;
-  margin-bottom:12px;
-  background:rgba(255,255,255,0.02);
-  transition:0.25s;
-}
-
-.item:hover{
-  transform:translateY(-4px);
-  border-color:rgba(59,130,246,0.4);
-  background:rgba(255,255,255,0.03);
-}
-
-.title{font-weight:500}
-.desc{font-size:12px;color:var(--muted);margin-top:4px}
-.left{display:flex;flex-direction:column}
-
-a.link{
-  color:var(--muted);
-  text-decoration:none;
-  font-size:13px;
-}
-
-a.link:hover{color:var(--accent)}
-
-/* NOW */
-.now{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.tag{
-  font-size:12px;
-  padding:8px 10px;
-  border:1px solid var(--border);
-  border-radius:999px;
-  color:var(--muted);
-}
-
-/* FADE */
-.fade{
-  opacity:0;
-  transform:translateY(10px);
-  transition:0.6s ease;
-}
-
-.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:60px;
-  color:var(--muted);
-  font-size:12px;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-  }
-  .hero h1{
-    font-size:2.8rem;
-  }
-  nav{
-    padding:20px;
-  }
-}
-</style>
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 11px; }
+      .section { padding: 3.5rem 1.25rem; }
+      .hero { padding-top: 4rem; padding-bottom: 3.5rem; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- NAV -->
-<nav>
-  <div>Lucy Batten</div>
-  <div>
-    <a href="#work">Work</a>
-    <a href="#learn">Learn</a>
-    <a href="#content">Content</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+  <nav>
+    <a class="nav-name" href="#top">Lucy Batten</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#substack">Writing</a>
+      <a href="#youtube">Videos</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<div class="hero fade">
-  <div>
-    <h1>I build tools, learn in public, and ship fast.</h1>
-    <p>
-      I’m focused on building software, sharing what I learn,
-      and turning ideas into real products and income streams.
+  <!-- HERO -->
+  <section class="section hero" id="top">
+    <div class="section-eyebrow">Software Developer · UK</div>
+    <h1>Hi, I'm<br><em>Lucy Batten.</em></h1>
+    <p class="hero-bio">I build thoughtful software and share what I learn — through writing, videos, and digital products. Welcome to my corner of the internet.</p>
+    <div class="hero-pills">
+      <a class="pill" href="https://github.com/lucyb0207" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a class="pill" href="https://lucybatten.substack.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M22.539 8.242H1.46V5.406h21.08zM1.46 10.812V24L12 18.11 22.54 24V10.812zM22.54 0H1.46v2.836h21.08z"/></svg>
+        Substack
+      </a>
+      <a class="pill" href="https://www.youtube.com/@lucyb0207" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        YouTube
+      </a>
+      <a class="pill" href="https://linkedin.com/in/lucybatten" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="pill" href="https://twitter.com/lucyb0207" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        Twitter / X
+      </a>
+      <a class="pill" href="https://www.patreon.com/LucyBuilds" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="14.5" cy="9.5" r="6.5"/><line x1="2" y1="22" x2="2" y2="2"/><line x1="6" y1="22" x2="6" y2="2"/></svg>
+        Patreon
+      </a>
+      <a class="pill" href="https://payhip.com/lucyb0207" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Payhip
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-eyebrow">About me</div>
+    <p class="about-text">
+      I'm a software developer with a passion for building <strong>clean, purposeful tools</strong>. I care about the details, both in code and in how things are communicated.<br><br>
+      Outside of developing, I write about what I'm learning, create content for a growing audience, and ship digital products that help other developers and creators. I'm based in the <strong>UK</strong> and always open to interesting conversations, collaborations, and opportunities.
     </p>
+  </section>
 
-    <div class="cta">
-      <a class="button" href="#contact">Contact</a>
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-eyebrow">Projects</div>
+    <div class="projects-grid">
+      <a class="project-card" href="https://github.com/lucyb0207/CodeAtlas" target="_blank">
+        <div class="project-tag">Open Source</div>
+        <div class="project-title">CodeAtlas</div>
+        <div class="project-desc">Visualise GitHub repos as interactive dependency graphs.</div>
+      </a>
+      <a class="project-card" href="https://toxic-ai-code-reviewer.vercel.app/" target="_blank">
+        <div class="project-tag">Open Source</div>
+        <div class="project-title">ToxicAI Code Roaster</div>
+        <div class="project-desc">Fun project that brutally roasts your code.</div>
+      </a>
+      <a class="project-card" href="https://devflow-sand-eta.vercel.app/" target="_blank">
+        <div class="project-tag">Web App</div>
+        <div class="project-title">DevFlow</div>
+        <div class="project-desc">A second brain for developers, allowing you to save ideas without losing flow.</div>
+      </a>
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <div> Building: CodeAtlas</div>
-    <div> Learning: Systems + CS</div>
-    <div> Content: Devlogs</div>
-    <div style="margin-top:12px;color:var(--muted);font-size:12px;">
-      Building in public.
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="section-eyebrow">Skills</div>
+    <div class="skills-wrap">
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">TypeScript</span>
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">Git</span>
+      <span class="skill-tag">CI/CD</span>
+      <span class="skill-tag">Docker</span>
+      <span class="skill-tag">AWS</span>
+      <span class="skill-tag">Technical Writing</span>
     </div>
-    <div> Recent Article: <a class='link' href='https://coderlegion.com/14245/developers-dont-have-a-productivity-problem-they-have-a-memory-problem'>CoderLegion: DevFlow</a></div>
-  </div>
-</div>
+  </section>
 
-<!-- WORK -->
-<section id="work" class="fade">
-  <h2>Selected Work</h2>
-
-  <div class="item">
-    <div class="left">
-      <div class="title">CodeAtlas</div>
-      <div class="desc">Visualise GitHub repos as dependency graphs</div>
+  <!-- SUBSTACK -->
+  <section class="section" id="substack">
+    <div class="section-eyebrow">Writing</div>
+    <div class="creator-header">
+      <div class="creator-icon substack-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08zM1.46 10.812V24L12 18.11 22.54 24V10.812zM22.54 0H1.46v2.836h21.08z"/></svg>
+      </div>
+      <div>
+        <div class="creator-name">Substack</div>
+        <div class="creator-handle">lucybatten.substack.com</div>
+      </div>
     </div>
-    <a class="link" href="https://github.com/lucyb0207/CodeAtlas">GitHub →</a>
-  </div>
-
-</section>
-
-<!-- LEARN -->
-<section id="learn" class="fade">
-  <h2>Learning & Products</h2>
-
-  <div class="item">
-    <div class="left">
-      <div class="title">Digital Products</div>
-      <div class="desc">Templates & resources</div>
+    <div class="substack-posts">
+      <!-- Replace these with your real post details -->
+      <a class="substack-post" href="https://lucybatten.substack.com/p/ship-log-01-why-my-full-stack-app?r=56966q" target="_blank" rel="noopener">
+        <div class="post-date">Apr 2026</div>
+        <div class="post-title">SHIP LOG #01</div>
+        <div class="post-preview">I built a frontend, backend, and database that all worked perfectly... just not together. This is what full-stack development actually is.</div>
+      </a>
+      <a class="substack-post" href="https://lucybatten.substack.com/p/from-url-to-website-what-happens" target="_blank" rel="noopener">
+        <div class="post-date">Mar 2026</div>
+        <div class="post-title">From URL to Website</div>
+        <div class="post-preview">What happens when you enter a URL in your browser.</div>
+      </a>
+      <a class="substack-post" href="https://lucybatten.substack.com/p/the-truth-about-learning-to-code" target="_blank" rel="noopener">
+        <div class="post-date">Mar 2026</div>
+        <div class="post-title">The Truth About Learning To Code That Noone Tells You</div>
+        <div class="post-preview">The mistakes people make, and how to fix them</div>
+      </a>
     </div>
-    <a class="link" href="https://payhip.com/lucyb0207">Shop →</a>
-  </div>
-</section>
+    <a class="cta-btn btn-substack" href="https://lucybatten.substack.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08zM1.46 10.812V24L12 18.11 22.54 24V10.812zM22.54 0H1.46v2.836h21.08z"/></svg>
+      Subscribe on Substack
+    </a>
+  </section>
 
-<!-- CONTENT -->
-<section id="content" class="fade">
-  <h2>Content</h2>
-
-  <div class="item">
-    <div class="left">
-      <div class="title">YouTube</div>
-      <div class="desc">Devlogs & builds</div>
+  <!-- YOUTUBE -->
+  <section class="section" id="youtube">
+    <div class="section-eyebrow">Videos</div>
+    <div class="creator-header">
+      <div class="creator-icon yt-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </div>
+      <div>
+        <div class="creator-name">YouTube</div>
+        <div class="creator-handle">@lucyb0207</div>
+      </div>
     </div>
-    <a class="link" href="https://www.youtube.com/@lucyb0207">Watch →</a>
-  </div>
-
-  <div class="item">
-    <div class="left">
-      <div class="title">Patreon</div>
-      <div class="desc">Behind the scenes</div>
+    <div class="yt-grid" id="yt-grid">
+      <div class="yt-card">
+        <div class="yt-card-body">
+          <div class="yt-title">
+            I'm working on producing higher quality YouTube videos at the minute.
+          </div>
+        </div>
+      </div>
     </div>
-    <a class="link" href="https://www.patreon.com/cw/LucyBuilds">Join →</a>
-  </div>
+      <!-- Replace VIDEO_ID_1/2/3 with your real YouTube video IDs e.g. dQw4w9WgXcQ -->
+      <!--<a class="yt-card" href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <img src="https://i.ytimg.com/vi/VIDEO_ID_1/mqdefault.jpg" alt="Video thumbnail" onerror="this.parentElement.innerHTML='<div class=\'yt-play-btn\'><svg viewBox=\'0 0 24 24\' fill=\'currentColor\'><polygon points=\'5 3 19 12 5 21 5 3\'/></svg></div>'" />
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-title">Your latest video title</div>
+          <div class="yt-meta">Replace VIDEO_ID_1 with your real video ID</div>
+        </div>
+      </a>
+      <a class="yt-card" href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <img src="https://i.ytimg.com/vi/VIDEO_ID_2/mqdefault.jpg" alt="Video thumbnail" onerror="this.parentElement.innerHTML='<div class=\'yt-play-btn\'><svg viewBox=\'0 0 24 24\' fill=\'currentColor\'><polygon points=\'5 3 19 12 5 21 5 3\'/></svg></div>'" />
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-title">Second video title</div>
+          <div class="yt-meta">Replace VIDEO_ID_2 with your real video ID</div>
+        </div>
+      </a>
+      <a class="yt-card" href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <img src="https://i.ytimg.com/vi/VIDEO_ID_3/mqdefault.jpg" alt="Video thumbnail" onerror="this.parentElement.innerHTML='<div class=\'yt-play-btn\'><svg viewBox=\'0 0 24 24\' fill=\'currentColor\'><polygon points=\'5 3 19 12 5 21 5 3\'/></svg></div>'" />
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-title">Third video title</div>
+          <div class="yt-meta">Replace VIDEO_ID_3 with your real video ID</div>
+        </div>
+      </a>
+    </div>-->
+    <a class="cta-btn btn-yt" href="https://www.youtube.com/@lucyb0207" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      Subscribe on YouTube
+    </a>
+  </section>
 
-  <div class="item">
-    <div class="left">
-      <div class="title">Substack</div>
-      <div class="desc">Sharing my thoughts</div>
+  <!-- DIGITAL PRODUCTS -->
+  <section class="section" id="products">
+    <div class="section-eyebrow">Digital products</div>
+    <div class="creator-header">
+      <div class="creator-icon payhip-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg>
+      </div>
+      <div>
+        <div class="creator-name">Payhip store</div>
+        <div class="creator-handle">payhip.com/lucyb0207</div>
+      </div>
     </div>
-    <a class="link" href="https://substack.com/@lucybatten">Subscribe →</a>
-  </div>
-</section>
-
-<!-- NOW -->
-<section class="fade">
-  <h2>Now</h2>
-  <div class="now">
-    <div class="tag">Building CodeAtlas</div>
-    <div class="tag">Learning full-stack dev</div>
-    <div class="tag">Growing audience</div>
-    <div class="tag">Experimenting with income</div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="fade">
-  <h2>Contact</h2>
-
-  <div class="item">
-    <div class="left">
-      <div class="title">GitHub</div>
-      <div class="desc">Everything I build lives here</div>
+    <div class="products-grid">
+      <!-- Replace with your real product names, prices and Payhip product URLs -->
+      <a class="product-card" href="https://payhip.com/lucyb0207" target="_blank" rel="noopener">
+        <div class="product-cover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Product One</div>
+          <div class="product-price">£X.XX</div>
+        </div>
+      </a>
+      <a class="product-card" href="https://payhip.com/lucyb0207" target="_blank" rel="noopener">
+        <div class="product-cover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Product Two</div>
+          <div class="product-price">£X.XX</div>
+        </div>
+      </a>
+      <a class="product-card" href="https://payhip.com/lucyb0207" target="_blank" rel="noopener">
+        <div class="product-cover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Product Three</div>
+          <div class="product-price">£X.XX</div>
+        </div>
+      </a>
     </div>
-    <a class="link" href="https://github.com/lucyb0207">Go →</a>
-  </div>
+    <a class="cta-btn btn-payhip" href="https://payhip.com/lucyb0207" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      Visit my store
+    </a>
+  </section>
 
-  <div class="item">
-    <div class="left">
-      <div class="title">Email</div>
-      <div class="desc">Get in touch via email</div>
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-eyebrow">Contact</div>
+    <p class="contact-bio">I'm always happy to hear from interesting people... whether it's a project idea, a collaboration, or just a hello.</p>
+    <a class="contact-email" href="mailto:lucyb0207@icloud.com">lucyb0207@icloud.com</a>
+  </section>
+
+  <footer>
+    <span>© 2026 Lucy Batten</span>
+    <div style="display:flex;gap:1.25rem;">
+      <a href="https://lucybatten.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="https://www.youtube.com/@lucyb0207" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://payhip.com/lucyb0207" target="_blank" rel="noopener">Products</a>
+      <a href="https://github.com/lucyb0207" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <a class="link" href="mailto:lucyb0207@icloud.com">Send →</a>
-  </div>
-
-  <div class="item">
-    <div class="left">
-      <div class="title">LinkedIn</div>
-      <div class="desc">Let's connect on LinkedIn</div>
-    </div>
-    <a class="link" href="https://linkedin.com/in/lucybatten">Go →</a>
-  </div>
-</section>
-<section id='newsletter' class='fade'>
-  <div class='item'>
-    <iframe src="https://lucybatten.substack.com/embed" width="480" height="320" style="border: 1px solid #EEE; background: white" frameborder="0" scrolling="no"></iframe>
-  </div>
-</section>
-
-
-<footer class="fade">
-  Built intentionally. Updated when things change.
-</footer>
-
-<script>
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-    }
-  });
-});
-
-document.querySelectorAll('.fade').forEach(el=>{
-  observer.observe(el);
-});
-</script>
+  </footer>
 
 </body>
 </html>
